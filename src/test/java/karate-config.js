@@ -1,18 +1,21 @@
 function fn() {
-  var env = karate.env; // get system property 'karate.env'
-  karate.log('karate.env system property was:', env);
+  var env = karate.env;
   if (!env) {
-    env = 'dev';
+    env = 'test1';
   }
+  karate.log('karate.env system property was:', env);
   var config = {
     env: env,
-	myVarName: 'someValue'
-  }
-  if (env == 'dev') {
-    // customize
-    // e.g. config.foo = 'bar';
-  } else if (env == 'e2e') {
-    // customize
-  }
+	  baseUrl: 'http://www.google.com',
+	  userName: 'userName',
+	  password: 'password'
+  };
+  if (env == 'test2') {
+    config.baseUrl = 'http://www.seznam.cz',
+    config.userName = 'username',
+    config.password = 'password'
+  };
+  karate.configure('driver', { type: 'chrome', addOptions: ['--start-maximized'] })
+  karate.configure('afterScenario', function(){ if (karate.info.errorMessage) driver.screenshot() })
   return config;
 }

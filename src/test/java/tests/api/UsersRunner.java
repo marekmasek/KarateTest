@@ -1,4 +1,4 @@
-package examples.api;
+package tests.api;
 
 import com.intuit.karate.junit5.Karate;
 

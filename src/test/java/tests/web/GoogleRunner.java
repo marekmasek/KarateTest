@@ -1,4 +1,4 @@
-package examples.web;
+package tests.web;
 
 import com.intuit.karate.junit5.Karate;
 
